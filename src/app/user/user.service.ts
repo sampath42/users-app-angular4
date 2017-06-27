@@ -26,11 +26,8 @@ export class UserService {
   }
 
   getUsers(){
-    var usersArray= [];
-    var user = new User(1,'firstName','lastName','email@email.com');
-    usersArray.push(user);
-    //return this._http.get("/users")
-    return usersArray//.map(data=>data.json())//.toPromise()
+    return this._http.get("/users")
+    .map(data=>data.json()).toPromise()
   }
 
   getUser(user: User){

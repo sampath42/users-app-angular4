@@ -2,5 +2,10 @@
   user works!
 </h1>
 {{users | json}}
+<ul>
+  <li *ngFor="let user of users; let i = index">
+    {{i}} {{user.first_name}}
+  </li>
+</ul>
 <app-user-new></app-user-new>
-<app-user-list></app-user-list>
+<app-user-list [users]="users"></app-user-list>
