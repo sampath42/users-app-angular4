@@ -21,6 +21,21 @@ export class UserComponent implements OnInit {
     //this.getUsers();
   }
 
+  create(user: User){
+    this.users.push(user);
+  }
+  
+  destroy(user: User){
+    const i = this.users.indexOf(user);
+    this.users.splice(i,1);
+  }
+
+  update(users: any){
+    const i = this.users.indexOf(users.original);
+    this.users[i]=users.edited;
+    this.users[i].editable = false;
+  }
+
   getUsers(){
     this._userService.getUsers().then(users=>this.users=users)
   }

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { User } from "app/user/user";
 
 @Component({
   selector: 'app-user-list',
@@ -8,10 +9,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserListComponent implements OnInit {
 
   @Input() users;
-
+  @Output() destroyUserEvent = new EventEmitter();
+  @Output() updateUserEvent = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  destroy(user: User){
+    this.destroyUserEvent.emit(user);
+  }
+
+  update(users){
+    this.updateUserEvent.emit(users)
   }
 
 }
